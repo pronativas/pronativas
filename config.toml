@@ -13,10 +13,10 @@ unsafe = true
 
 [[menu.main]]
 name = "Exóticas Problemáticas"
-weight = 40
+weight = 400
 url = "/tags/problemáticas/"
 
 [[menu.main]]
 name = "Plantas Nativas"
-weight = 50
+weight = 500
 url = "/tags/nativas/"
