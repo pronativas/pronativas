@@ -1,0 +1,232 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"target",
+				"targetpopulation_id"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ed/apps/projects/pronativas/themes/pronativas/layouts/partials/header.html",
+		"/home/ed/apps/projects/pronativas/content/about.md",
+		"/home/ed/apps/projects/pronativas/themes/pronativas/layouts/index.html",
+		"/home/ed/apps/projects/pronativas/themes/pronativas/readme.md",
+		"/home/ed/Videos/renamem",
+		"/home/ed/apps/clients/ac/merge/server/sigh",
+		"/home/ed/apps/clients/ac/merge/server/users.sql",
+		"/home/ed/Desktop/act.json",
+		"/mnt/av/Books/95fe91f171a107b0037a1ff48d3d9458.torrent",
+		"/home/ed/test.js",
+		"/home/ed/apps/clients/ac/merge/report_queries.sql",
+		"/home/ed/rpts",
+		"/home/ed/Downloads/sitedown.html",
+		"/home/ed/Documents/Clients/Calflora/Ansible For Reporting server",
+		"/home/ed/Documents/CalfloraUsers",
+		"/home/ed/m.txt",
+		"/home/ed/Documents/Clients/Calflora/DevOps.txt",
+		"/home/ed/Desktop/keyreads",
+		"/home/ed/src/mono-icons/svgo/icons",
+		"/home/ed/src/mono-icons/svgo/add.svg",
+		"/home/ed/.cache/.fr-cSOaj9/2020-04-03.log",
+		"/home/ed/.cache/.fr-VdS6C4/2020-05-08.log",
+		"/home/ed/.cache/.fr-xk2kg6/2020-05-02.log",
+		"/home/ed/.cache/.fr-s84KdK/2020-05-04.log",
+		"/home/ed/.cache/.fr-NWo2tM/2020-05-03.log",
+		"/home/ed/.cache/.fr-9zF7NJ/2020-05-02.log",
+		"/home/ed/.cache/.fr-psEF2z/2020-04-13.log",
+		"/home/ed/.cache/.fr-Y26rN7/2020-05-04.log",
+		"/home/ed/.cache/.fr-TxtDja/2020-05-03.log",
+		"/home/ed/.cache/.fr-DUu9v7/2020-05-02.log",
+		"/home/ed/apps/projects/pronativas/themes/pronativas/static/img/logo-pronativas_gray.svg",
+		"/home/ed/Desktop/Pronativas/leafyborder_orig.svg",
+		"/home/ed/Desktop/Pronativas/leafyborder.svg",
+		"/home/ed/LayersNotes.txt",
+		"/home/ed/Downloads/Icons8_flat_delete_generic(1).svg",
+		"/home/ed/Downloads/dot_color.svg",
+		"/home/ed/Downloads/bullet(1).svg",
+		"/home/ed/.cache/.fr-RjC4Ty/2020-04-03.log",
+		"/home/ed/.cache/.fr-3dSa64/2020-05-04.log",
+		"/home/ed/.cache/.fr-RKEk22/2020-05-03.log",
+		"/home/ed/.cache/.fr-xBUdW5/2020-05-02.log",
+		"/home/ed/.cache/.fr-dXLK7O/2020-05-03.log",
+		"/home/ed/.cache/.fr-V0nygQ/2020-05-04.log",
+		"/home/ed/.cache/.fr-NCwtuC/2020-04-13.log",
+		"/home/ed/.cache/.fr-pDDhkP/2020-05-02.log",
+		"/home/ed/.cache/.fr-eGUsob/2020-05-02.log",
+		"/home/ed/.cache/.fr-1gonI1/2020-05-02.log",
+		"/home/ed/.cache/.fr-XjUOmY/2020-05-03.log",
+		"/home/ed/.cache/.fr-cN52yY/2020-05-04.log",
+		"/home/ed/.cache/.fr-t3ikNY/2020-05-05.log",
+		"/home/ed/ss_status.txt",
+		"/home/ed/videos",
+		"/home/ed/Downloads/apostille/Illinois.txt",
+		"/home/ed/apps/clients/calflora/server/gwt-home-sh-html/www/nmgo/js/tree.js",
+		"/home/ed/Desktop/STT and SSAL 8.7.20 Merged System Users.csv",
+		"/home/ed/.ssh/id_rsa.pub"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "theme.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

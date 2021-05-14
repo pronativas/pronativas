@@ -1,0 +1,195 @@
+<script>
+	let templateFunctions = {};
+	let lunrIndex = null;
+	let pagesIndex = null;
+(function() {
+	// Change template settings
+	doT.templateSettings = {
+	  evaluate:    /\[\[([\s\S]+?)\]\]/g,
+	  interpolate: /\[\[=([\s\S]+?)\]\]/g,
+	  encode:      /\[\[!([\s\S]+?)\]\]/g,
+	  use:         /\[\[#([\s\S]+?)\]\]/g,
+	  define:      /\[\[##\s*([\w\.$]+)\s*(\:|=)([\s\S]+?)#\]\]/g,
+	  conditional: /\[\[\?(\?)?\s*([\s\S]*?)\s*\]\]/g,
+	  iterate:     /\[\[~\s*(?:\}\}|([\s\S]+?)\s*\:\s*([\w$]+)\s*(?:\:\s*([\w$]+))?\s*\]\])/g,
+	  varname: 'it',
+	  strip: true,
+	  append: true,
+	  selfcontained: false
+	};
+
+	// Functions for the burger menu
+	function openBurger() {
+		document.body.classList.add("noscroll");
+		document.querySelector("#burger-modal").style.display = "block";
+		window.onkeyup = function(e) {
+			if (e.keyCode === 27) {
+				closeBurger();
+			}
+		}
+	};
+
+	function closeBurger() {
+		document.body.classList.remove("noscroll");
+		document.querySelector("#burger-modal").style.display = "none";
+		window.onkeyup = null;
+	};
+
+	function initLunr() {
+	    let xhr = new XMLHttpRequest();
+	    xhr.open('GET', '/search_index.json', true);
+
+	    xhr.onload = function () {
+		    if (xhr.readyState === xhr.DONE) {
+		        if (xhr.status >= 200 && xhr.status < 400) {
+		            pagesIndex = JSON.parse(xhr.responseText);
+		            lunrIndex = lunr(function () {
+		            	this.use(lunr.es);
+		                this.field("title", {
+		                    boost: 10
+		                });
+		                this.field("tags", {
+		                    boost: 5
+		                });
+		                this.field("keywords", {
+		                    boost: 25
+		                });
+		                this.field("text");
+		                this.ref("location");
+    					
+    					this.metadataWhitelist = ['position'];
+
+		                for (let i = 0; i < pagesIndex.length; ++i) {
+		                    this.add(pagesIndex[i]);
+		                }
+		            });
+		        } else {
+		            let err = xhr.statusText;
+		            console.error("Error getting Hugo index flie:", err);
+		        }
+		    }
+	    };
+	    xhr.send();
+	};
+
+	function clearResults() {
+	    let $results = document.querySelector("#searchResults section");
+	    $results.innerHTML = "";
+	};
+
+	function closeResults() {
+		clearResults();
+		document.body.classList.remove("noscroll");
+	    let $results = document.querySelector("#search-modal");
+	    $results.style.display = "none";
+	}
+
+	function initUI() {
+	    let $search = document.querySelector("#searchInput");
+	    $search.onkeydown = function (e) {
+	    	if (e.keyCode === 10 || e.keyCode === 13) {
+	    		e.preventDefault();
+	    		doSearch();
+	    	}
+
+	    	if (e.keyCode === 27) {
+	    		e.preventDefault();
+	    		clearResults();
+	    		$search.value = "";
+	    	}
+	    	return;
+	    };
+	    let $searchBtn = document.querySelector("#search div img");
+	    $searchBtn.onclick = function() { doSearch(); };
+	};
+
+	function doSearch() {
+	    let $search = document.querySelector("#searchInput");
+	    let query = $search.value;
+	    $search.value = "";
+
+	    clearResults();
+
+        //add some fuzzyness to the string matching to help with spelling mistakes.
+        let fuzzLength = Math.round(Math.min(Math.max(query.length / 4, 1), 2));
+        let fuzzyQuery = query + '~' + fuzzLength;
+
+        let results = query === "" ? [] : search(fuzzyQuery);
+        renderResults(results, query);
+	}
+
+	/**
+	 * Trigger a search in lunr and transform the result
+	 *
+	 * @param  {String} query
+	 * @return {Array}  results
+	 */
+	function search(query) {
+	    return lunrIndex.search(query).map(function (result) {
+	        let page = Object.assign({},pagesIndex.filter(function (page) {
+	            return page.location === result.ref;
+	        })[0], {score: result.score});
+	        page.clip = page.text.substr(0,100) + "&hellip;";
+	        return page;
+	    });
+	};
+
+	/**
+	 * Display the 10 first results
+	 *
+	 * @param  {Array} results to display
+	 */
+	function renderResults(results, query) {
+		document.body.classList.add("noscroll");
+	    $results = document.querySelector("#search-modal");
+	    $results.style.display = "block";
+	    $resultList = document.querySelector("#searchResults section");
+
+	    if (!results.length) {
+	    	$resultList.innerHTML = "<p class=\"noresults\">Su búsqueda &ldquo;" + query + "&rdquo; no dio resultados. Por favor, intente una búsqueda diferente.</p>";
+	        return;
+	    }
+
+	    results.slice(0, 20).forEach(function (result) {
+	    	let html = templateFunctions.resultTemplate(result);
+	        $resultList.innerHTML = $resultList.innerHTML + html;
+	    });
+	};
+
+	window.onload = function() {
+
+		// Build template functions
+		let templates = document.querySelectorAll("template");
+		for (let i = 0; i < templates.length; i++) {
+			let template = templates[i];
+			templateFunctions[template.id] = doT.template(template.innerHTML);
+		}
+
+		// Load the Lunr search index
+		initLunr();
+		initUI();
+
+		document.querySelector("#burger-modal").onclick = function(e) {
+			let clicked = e.target;
+			if (clicked !== undefined) {
+				let id = clicked.id;
+				if ("burger-modal" === id) {
+					closeBurger();
+				};
+			};
+		};
+		document.querySelector("#burger-x").onclick = function(e) {
+			e.preventDefault();
+			closeBurger();
+		}
+		document.querySelector("#burger").onclick = function(e) {
+			e.preventDefault();
+			openBurger();
+		};
+		document.querySelector("#results-x").onclick = function(e) {
+			e.preventDefault();
+			closeResults();
+		}
+	};
+})();
+</script>

@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="container">
+	<div class="plantslist">
+		{{ $currentPlant := . }}
+		{{ $plants := .Site.Taxonomies.tags.nativas }}
+		{{ if in .Params.tags "Problemáticas" }}{{ $plants = .Site.Taxonomies.tags.problemáticas }}{{ end }}
+		<ul>
+			{{- range $plants -}}
+			{{- partial "plantinlist.html" (dict "plant" . "isCurrent" (eq .Permalink $currentPlant.Permalink)) -}}
+			{{ end }}
+		</ul>
+</ul>
+	</div>
+	<div class="selectedplant">
+		<article class="page-{{ replace .Title " " "_" | lower }}">
+		    <h1 class="page-title">{{ .Title }}</h1>
+			{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+			{{ with $img }}
+			   {{ $big := .Fill "1024x512 smart" }}
+			   {{ $small := $big.Resize "512x" }}
+			    <img srcset="{{ $small.RelPermalink }} 1x, {{ $big.RelPermalink }} 2x" alt="{{ $img.Title }}" width="{{ $big.Width }}">
+			{{ end }}
+		    <div class="page-content">{{ .Content }}</div>
+		</article>
+	</div>
+</div>
+
+<style>
+	.container {
+		display: flex;
+	}
+	.container ul {
+		list-style: none;
+	}
+
+	.plantslist {
+		display: flex;
+		flex-direction: column;
+		width: 18rem;
+	}
+
+	.selectedplant {
+		flex-grow: 1;
+	}
+</style>
+{{ end }}

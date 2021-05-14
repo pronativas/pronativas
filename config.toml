@@ -1,0 +1,22 @@
+baseURL = ""
+languageCode = "es"
+title = "Pronativas"
+theme = "pronativas"
+
+[taxonomies]
+area = "areas"
+category = "categories"
+tag = "tags"
+
+[markup.goldmark.renderer]
+unsafe = true 
+
+[[menu.main]]
+name = "Exóticas Problemáticas"
+weight = 40
+url = "/tags/problemáticas/"
+
+[[menu.main]]
+name = "Plantas Nativas"
+weight = 50
+url = "/tags/nativas/"

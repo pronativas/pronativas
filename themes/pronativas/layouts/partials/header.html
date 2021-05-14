@@ -1,0 +1,7 @@
+{{- partial "burger.html" . -}}
+<header class="header">
+    {{ with .Site.GetPage "/" }}
+        <a href="{{ .Permalink }}"><img src="/img/logo-pronativas.svg" /></a>
+    {{ end }}
+</header>
+{{- partial "search.html" . -}}

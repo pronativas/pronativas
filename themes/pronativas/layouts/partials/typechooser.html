@@ -1,0 +1,23 @@
+<h2 class="category">
+	Categorías de Plantas:
+</h2>
+<ul class="category">
+	<li>Nativas</li>
+	<li>Exóticas</li>
+</ul>
+<!-- Insert list/card toggle buttons here -->
+
+<h3>Estas son plantas exóticas problemáticas pro lo que recomendamos NO tener estas plantas en su jardín.</h3>
+
+<nav class="home-menu pure-menu pure-menu-horizontal">
+	<ul class="pure-menu-list">
+		{{ $currentPage := . }}
+	{{ range $areaslug, $area := $.Site.Taxonomies.areas }}
+	    {{ $ap := printf "/areas/%s/" $areaslug }}
+	    {{ $isCurr := eq $ap $currentPage.RelPermalink }}
+	    <li class="pure-menu-item {{ if $isCurr }}pure-menu-selected{{ end }}">
+	        <a class="pure-menu-link" href="{{ "/" | relLangURL}}{{ "areas" | urlize }}/{{ $areaslug | urlize }}">{{ $areaslug | humanize | title }}</a>
+	    </li>
+	{{ end }}
+	</ul>
+</nav>

@@ -1,0 +1,27 @@
+<div id="search">
+	<div>
+		<input autocomplete="off" id="searchInput" type="text" placeholder="¿Que Busca?">
+		<img src="/img/search.png">
+	</div>
+</div>
+
+<div id="search-modal" style="display: none">
+	<div id="searchResults">
+		<div id="results-x">×</div>
+		<h2>Resultados de la búsqueda</h2>
+		<section>
+		</section>
+	</div>
+</div>
+
+
+<template id="resultTemplate">
+	<div class="search-result">
+		<div class="thumb"><a href="[[= it.location]]"><img class="pure-img" src="https://via.placeholder.com/300x300"></a></div>
+		<div class="item">
+			<h4>[[= it.title ]]</h4>
+			<p>[[= it.clip ]]</p>
+			<a href="[[= it.location]]">Resultado</a>
+		</div>
+	</div>
+</template>

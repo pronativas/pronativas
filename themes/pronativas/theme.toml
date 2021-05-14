@@ -1,0 +1,9 @@
+name = "pronativas"
+license = "MIT"
+description = "The Pronativas theme using Pure-CSS."
+tags = ["Hugo", "Pure CSS", "theme", "pronativas"]
+features = []
+min_version = "0.69"
+
+[author]
+  name = "Edward Dorrington"

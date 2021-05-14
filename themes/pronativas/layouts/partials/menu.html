@@ -1,0 +1,36 @@
+<ul class="pure-menu-list">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+        {{ if .HasChildren }}
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover {{ if $currentPage.IsMenuCurrent "main" . }}pure-menu-selected{{ end }}">
+                <a class="pure-menu-link" href="{{ .URL }}">{{ .Name }}</a>
+                <ul class="pure-menu-children">
+                    {{ range .Children }}
+                        <li class="pure-menu-item {{ if $currentPage.IsMenuCurrent "main" . }}pure-menu-selected{{ end }}">
+                            <a class="pure-menu-link" href="{{ .URL }}">{{ .Name }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </li>
+        {{ else }}
+            {{ if eq .Name "Plantas Nativas" }}
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover {{ if $currentPage.IsMenuCurrent "main" . }}pure-menu-selected{{ end }}">
+                    <a class="pure-menu-link" href="{{ .URL }}">{{ .Name }}</a>
+                    <ul class="pure-menu-children">
+                        {{ range $areaslug, $area := $.Site.Taxonomies.areas }}
+                            {{ $ap := printf "/areas/%s/" $areaslug }}
+                            {{ $isCurr := eq $ap $currentPage.RelPermalink }}
+                            <li class="pure-menu-item {{ if $isCurr }}pure-menu-selected{{ end }}">
+                                <a class="pure-menu-link" href="{{ "/" | relLangURL}}{{ "areas" | urlize }}/{{ $areaslug | urlize }}">{{ $areaslug | humanize | title }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ else }}
+                <li class="pure-menu-item {{ if $currentPage.IsMenuCurrent "main" . }}pure-menu-selected{{ end }}">
+                    <a class="pure-menu-link" href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</ul>

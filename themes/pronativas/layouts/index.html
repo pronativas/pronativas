@@ -1,0 +1,92 @@
+{{ define "main" }}
+<nav class="home-menu pure-menu pure-menu-horizontal">
+	{{- partial "menu.html" . -}}
+</nav>
+<article>
+    <div>{{ .Content }}</div>
+</article>
+
+<!-- Buttons -->
+<div class="page-buttons">
+    {{ with .Site.GetPage "/plantas" }}
+    <a href="{{ .Permalink }}">
+		<div id="btn_plantas">
+			Listas de Plantas
+		</div>
+	</a>
+	{{ end }}
+    {{ with .Site.GetPage "/beneficios" }}
+    <a href="{{ .Permalink }}">
+		<div id="btn_beneficios">
+			Beneficios de Plantas Nativas
+		</div>
+	</a>
+	{{ end }}
+    {{ with .Site.GetPage "/peligros" }}
+    <a href="{{ .Permalink }}">
+		<div id="btn_peligros">
+			Peligros de Plantas Exóticas
+		</div>
+	</a>
+	{{ end }}
+</div>
+
+	<!-- Map -->
+	<div class="home-map">
+		<div class="home-map-arealist">
+			<div class="home-map-area">
+				<img src="/img/acg_guanacaste.png" width="100" height="100">
+				<div>ACG<br/>Guanacaste</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/act_tempisque.png" width="100" height="100">
+				<div>ACT<br/>Tempisque</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/acat_arenal.png" width="100" height="100">
+				<div>ACA-T<br/>Arenal-Tempisque</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/acahn_huetarnorte.png" width="100" height="100">
+				<div>ACA-HN<br/>Huetar Norte</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/cordillera_central.png" width="100" height="100">
+				<div>ACCVC<br/>Cordillera Volcánica Central</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/acopac_pacificacentral.png" width="100" height="100">
+				<div>ACOPAC<br/>Pacífico Central</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/acosa_osa.png" width="100" height="100">
+				<div>ACOSA<br/>Osa</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/aclap_laamistad.png" width="100" height="100">
+				<div>ACLA-P<br/>La Amistad-Pacífico</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/aclac_laamistad.png" width="100" height="100">
+				<div>ACLA-C<br/>La Amistad-Caribe</div>
+			</div>
+			<div class="home-map-area">
+				<img src="/img/acto_tortuguero.png" width="100" height="100">
+				<div>ACTO<br/>Tortuguero</div>
+			</div>
+		</div>
+		<div>
+			<img src="/img/map.png" width="750" height="750" usemap="#crmap">
+			<map name="crmap">
+			  <area shape="rect" coords="24,168,130,218" alt="Tamarindo" href="/areas/tamarindo/">
+			  <area shape="rect" coords="13,253,119,303" alt="Nosara" href="/areas/nosara/">
+			  <area shape="rect" coords="213,198,328,248" alt="Monteverde" href="/areas/monteverde/">
+			  <area shape="rect" coords="384,177,484,230" alt="Sarapiquí" href="/areas/sarapiqui/">
+			  <area shape="rect" coords="360,256,470,311" alt="Valle Central" href="/areas/valle-central/">
+			  <area shape="rect" coords="345,376,465,431" alt="Manuel Antonio" href="/areas/manuel-antonio/">
+			  <area shape="rect" coords="595,515,680,570" alt="San Vito" href="/areas/san-vito/">
+			  <area shape="rect" coords="480,570,580,625" alt="Los Charcos" href="/areas/los-charcos-de-osa/">
+			</map>
+		</div>
+	</div>
+{{ end }}

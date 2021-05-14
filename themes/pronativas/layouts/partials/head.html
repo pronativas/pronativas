@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ block "title" . }}
+        {{- .Title }} - {{ .Site.Title -}}
+        {{ end }}</title>
+    {{- if .Description }}
+    <meta name="description" content="{{ .Description }}" />
+    {{ end -}}
+    {{- if .Keywords }}
+    <meta name="keywords" content="{{ delimit .Keywords "," }}" />
+    {{ end -}}
+    {{- if .Params.Author }}
+    <meta name="author" content="{{ .Params.Author}}" />
+    {{ end -}}
+    {{ hugo.Generator }}
+    
+    <link rel="apple-touch-icon" href="/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512"  href="/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="theme-color" content="#ffffff">
+
+    {{ $p_css := resources.Get "css/pure.css" }}
+    {{ $f_css := resources.Get "css/fonts.css" }}
+    {{ $s_css := resources.Get "css/site.css" }}
+    {{ $css := slice $p_css $f_css $s_css | resources.Concat "css/bundle.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ $lunrJs := resources.Get "js/lunr.js" }}
+    {{ $lunrSt := resources.Get "js/lunr.stemmer.support.js" }}
+    {{ $lunrEs := resources.Get "js/lunr.es.js" }}
+    {{ $dotJs := resources.Get "js/doT.js" }}
+    {{ $js := slice $lunrJs $lunrSt $lunrEs $dotJs | resources.Concat "js/bundle.js" | minify | fingerprint }}
+    <script src="{{ $js.Permalink }}"></script>
+</head>
