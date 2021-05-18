@@ -17,7 +17,13 @@
 
 <template id="resultTemplate">
 	<div class="search-result">
-		<div class="thumb"><a href="[[= it.location]]"><img class="pure-img" src="https://via.placeholder.com/300x300"></a></div>
+		<div class="thumb"><a href="[[= it.location]]">
+			[[ if (it.location.startsWith("/plantas")) { ]]
+			<img class="pure-img" src="[[= it.location ]]/featured.jpg">
+			[[ } else { ]]
+			<img class="pure-img" src="https://via.placeholder.com/300x300">
+			[[ } ]]
+		</a></div>
 		<div class="item">
 			<h4>[[= it.title ]]</h4>
 			<p>[[= it.clip ]]</p>

@@ -12,7 +12,7 @@ __¿Y cómo podemos saber si las plantas son invasoras?__
 
 Este sitio ofrece una lista de plantas exóticas con reconocidos comportamientos invasores, pero en realidad cualquier planta exótica que se reproduzca fácilmente corre el riesgo de ser invasora.
 
-<p style="text-align:center"><img src="/img/peligro.png"></p>
+![Planta peligro](/img/peligro.png#center)
 
 ## ¿Cómo pueden “escaparse” plantas de nuestro jardín?
 
