@@ -3,8 +3,8 @@
 	{{ $img := (.plant.Resources.ByType "image").GetMatch "*featured*" }}
 	{{ with $img }}
 	   {{ $big := .Fill "256x256 smart" }}
-	   {{ $small := $big.Resize "128x" }}
-	    <img srcset="{{ $small.RelPermalink }} 1x, {{ $big.RelPermalink }} 2x" alt="{{ $img.Title }}">
+	   {{ $small := $big.Resize "128x128" }}
+	    <img srcset="{{ $small.RelPermalink }} 1x, {{ $big.RelPermalink }} 2x" alt="{{ $img.Title }}" width="256">
 	{{ else }}
 		<img srcset="//via.placeholder.com/256x256 1x, //via.placeholder.com/512x512 2x" alt="Featured" width="256">
 	{{ end }}

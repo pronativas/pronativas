@@ -56,9 +56,9 @@
 		                });
 		                this.field("text");
 		                this.ref("location");
-    					
-    					this.metadataWhitelist = ['position'];
 
+		                // this.metadataWhitelist = ['position'];
+  		                
 		                for (let i = 0; i < pagesIndex.length; ++i) {
 		                    this.add(pagesIndex[i]);
 		                }
@@ -106,8 +106,12 @@
 	function doSearch() {
 	    let $search = document.querySelector("#searchInput");
 	    let query = $search.value;
-	    $search.value = "";
 
+	    if (query === "" || query.length < 2) return;
+
+	    $search.classList.remove("focused");
+	    $search.value = "";
+	    $search.blur();
 	    clearResults();
 
         //add some fuzzyness to the string matching to help with spelling mistakes.
@@ -128,14 +132,14 @@
 	    return lunrIndex.search(query).map(function (result) {
 	        let page = Object.assign({},pagesIndex.filter(function (page) {
 	            return page.location === result.ref;
-	        })[0], {score: result.score});
+	        })[0], {score: result.score}); // , match: result.matchData.metadata});
 	        page.clip = page.text.substr(0,100) + "&hellip;";
 	        return page;
 	    });
 	};
 
 	/**
-	 * Display the 10 first results
+	 * Display the first X results
 	 *
 	 * @param  {Array} results to display
 	 */
@@ -181,7 +185,7 @@
 		document.querySelector("#burger-x").onclick = function(e) {
 			e.preventDefault();
 			closeBurger();
-		}
+		};
 		document.querySelector("#burger").onclick = function(e) {
 			e.preventDefault();
 			openBurger();
@@ -189,7 +193,16 @@
 		document.querySelector("#results-x").onclick = function(e) {
 			e.preventDefault();
 			closeResults();
-		}
+		};
+		document.querySelector("#search img").ontouchend = function(e) {
+			let $search = document.querySelector("#searchInput");
+			$search.classList.toggle("focused");
+			if ($search.classList.contains("focused")) {
+				setTimeout(function() {
+					$search.focus();
+				}, 500);
+			}
+		};
 	};
 })();
 </script>

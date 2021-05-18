@@ -3,6 +3,23 @@
 {{ partial "head.html" . }}
 
 <body class="bg-gradient">
+    <script>
+    function check_webp() {
+        let bc = document.querySelector("body").classList;
+        let img = new Image();
+
+        img.onload = function () {
+            if ((img.width > 0) && (img.height > 0)) {
+                bc.remove("nowebp");
+                bc.add("webp");
+            }
+
+        };
+        img.src = "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==";
+    }
+    check_webp();
+    </script>
+
     {{- partial "header.html" . -}}
     <main class="main">
         {{- block "main" . }}{{- end }}

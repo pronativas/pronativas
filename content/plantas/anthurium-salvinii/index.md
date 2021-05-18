@@ -1,5 +1,5 @@
 ---
-title: "Anthurium Salvinii"
+title: "Anthurium salvinii"
 date: 2020-09-19T15:45:54-06:00
 draft: false
 tags:
